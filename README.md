@@ -6,33 +6,15 @@ The code models flexibility from a flexible energy resource, such as a heat pump
 
 The workflow is:
 
-Technical resource
-        ↓
-Technical flexibility
-        ↓
-User constraints
-        ↓
-User-acceptable flexibility
-        ↓
-Delivery probability
-        ↓
-Monte-Carlo simulation
-        ↓
-Probabilistic flexibility envelope
+Technical resource -> Technical flexibility -> User constraints -> User-acceptable flexibility -> Delivery probability -> Monte-Carlo simulation -> Probabilistic flexibility envelope
 
 The model produces:
-
-technical flexibility;
-
-expected flexibility;
-
-P10, P50 and P90 flexibility estimates;
-
-probability of successful delivery;
-
-day-ahead flexibility predictions;
-
-basic prediction-validation metrics.
+1. technical flexibility;
+2. expected flexibility;
+3. P10, P50 and P90 flexibility estimates;
+4. probability of successful delivery;
+5. day-ahead flexibility predictions;
+6. basic prediction-validation metrics.
 
 Main components
 FlexibleResource
@@ -47,30 +29,24 @@ FlexibleResource(
     recovery_time_hours=1.0
 )
 
-UserFlexibilityProfile
-Defines behavioural characteristics such as willingness, acceptance, comfort sensitivity and probability of overriding automated control.
+UserFlexibilityProfile: Defines behavioural characteristics such as willingness, acceptance, comfort sensitivity and probability of overriding automated control.
 
-SmartFLEXDigitalTwin
-Combines the technical resource and user profile.
+SmartFLEXDigitalTwin: Combines the technical resource and user profile.
 
 The main methods are:
-
 technical_flexibility()
 user_acceptable_flexibility()
 delivery_probability()
 monte_carlo_flexibility()
 predict_day_ahead()
 
-Monte-Carlo simulation
+Monte-Carlo simulation: 
 The Digital Twin runs thousands of possible user/resource responses to represent uncertainty. The resulting simulations are used to calculate the P10, P50 and P90 flexibility envelope.
 
-Validation
+Validation: 
 The validate_prediction() function compares predicted and observed flexibility using:
-
 MAE;
-
 RMSE;
-
 Normalised MAE.
 
 Running the code
